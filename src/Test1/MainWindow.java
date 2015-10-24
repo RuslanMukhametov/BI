@@ -6,11 +6,16 @@ package Test1;
 import javax.swing.*;
 
 public class  MainWindow extends JFrame {
-    MainWindow(){
+    int pcbWidth;
+    int pcbHeight;
 
+
+    MainWindow(int pcbWidth, int pcbHeight){
         super("Bat Algorithm");
+        this.pcbHeight = pcbHeight;
+        this.pcbWidth = pcbWidth;
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setSize(250, 250);
+        setSize(pcbWidth * 3, pcbHeight * 3);
 
 
     }

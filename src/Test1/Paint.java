@@ -13,11 +13,19 @@ public class Paint extends JPanel {
     ArrayList<Element> initialPlacement;
     int pcbWidth;
     int pcbHeight;
-    public Paint (ArrayList<Element> initialPlacement, ArrayList<Element> elements, int pcbWidth, int pcbHeight){
+    int xRA;
+    int yRA;
+    int widthRA;
+    int heightRA;
+    public Paint (ArrayList<Element> initialPlacement, ArrayList<Element> elements, int pcbWidth, int pcbHeight, int widthRA, int heightRA, int xRA, int yRA){
         this.initialPlacement = initialPlacement;
         this.elements = elements;
         this.pcbWidth = pcbWidth;
         this.pcbHeight = pcbHeight;
+        this.xRA = xRA;
+        this.yRA = yRA;
+        this.widthRA = widthRA;
+        this.heightRA = heightRA;
 
     }
 
@@ -25,12 +33,15 @@ public class Paint extends JPanel {
         g.setColor(Color.black);
         g.drawRect(0, 0, pcbWidth, pcbHeight);
         for (int j = 0; j < initialPlacement.size(); j ++){
-            g.fillRect(initialPlacement.get(j).getCentreX() - initialPlacement.get(j).getWidth() / 2, initialPlacement.get(j).getCentreY() - initialPlacement.get(j).getHeight() / 2, initialPlacement.get(j).getWidth(), initialPlacement.get(j).getHeight());
+            g.drawRect(initialPlacement.get(j).getCentreX() - initialPlacement.get(j).getWdth() / 2, initialPlacement.get(j).getCentreY() - initialPlacement.get(j).getHeght() / 2, initialPlacement.get(j).getWdth(), initialPlacement.get(j).getHeght());
         }
         g.drawRect(pcbWidth + 5, 0, pcbWidth, pcbHeight);
         for (int i = 0; i < elements.size(); i++) {
-            g.fillRect(elements.get(i).getCentreX() - elements.get(i).getWidth() / 2 + pcbWidth + 5, elements.get(i).getCentreY() - elements.get(i).getHeight() / 2, elements.get(i).getWidth(), elements.get(i).getHeight());
+            g.drawRect(elements.get(i).getCentreX() - elements.get(i).getWdth() / 2 + pcbWidth + 5, elements.get(i).getCentreY() - elements.get(i).getHeght() / 2, elements.get(i).getWdth(), elements.get(i).getHeght());
         }
+        g.setColor(Color.red);
+        g.fillRect(xRA - widthRA/2, yRA - heightRA/2, widthRA, heightRA);
+
 
 
     }
